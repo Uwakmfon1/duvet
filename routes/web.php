@@ -29,5 +29,14 @@ Route::middleware([
     })->name('dashboard');
 });
 
+
+route::get('/view_product',[AdminController::class,'view_product']);
+route::get('/show_product',[AdminController::class,'show_product']);
+// route::get('/view_product',[ AdminController::class,'view_product']);
+// route::get('/view_product',[ AdminController::class,'view_product']);
+// route::get('/view_product',[ AdminController::class,'view_product']);
+// route::get('/view_product',[ AdminController::class,'view_product']);
+// route::get('/view_product',[ AdminController::class,'view_product']);
+
 route::get('/redirect',[HomeController::class,'redirect']);
 
