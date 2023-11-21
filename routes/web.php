@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,8 +31,13 @@ Route::middleware([
 });
 
 
+
 route::get('/view_product',[AdminController::class,'view_product']);
-route::get('/show_product',[AdminController::class,'show_product']);
+
+route::post('/add_product',[AdminController::class,'add_product']);
+
+route::get('/show_product',[HomeController::class,'show_product']);
+
 // route::get('/view_product',[ AdminController::class,'view_product']);
 // route::get('/view_product',[ AdminController::class,'view_product']);
 // route::get('/view_product',[ AdminController::class,'view_product']);
