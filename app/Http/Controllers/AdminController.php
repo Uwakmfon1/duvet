@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\User;
@@ -21,18 +21,21 @@ class AdminController extends Controller
     }
     public function add_product(Request $request)
     {
-        dd($request);
-         $product = new Product;
+        // dd($request);
+         $product = new Product();
          $product->title = $request->title;
          $product->category = $request->title;
          $product->description = $request->title;
-
          $product->price = $request->title;
-
-         $product->image = $request->title;
          $product->discount_price = $request->title;
-         $product->image = $request->title;
 
+         $image = $request->image;
+         $imagename = time() . '.' . $image->getClientOriginalExtension();
+         $request->image->move('product',$imagename);
+         $product->image = $imagename;
+
+         $product->save();
+        return redirect()->back();
     }
 
     public function show_product()
@@ -50,5 +53,29 @@ class AdminController extends Controller
         return view('');
     }
 
+    public function add_categories(Request $request)
+    {
+        dd($request);
+
+        if(Auth::id()){
+
+            $category = new Category();
+            $category->category_name = $request->category_name;
+            $category->category = $request->category;
+            return redirect()->back();
+           }else{
+            return redirect('login');
+           }
+    }
+    
+    public function show_categories()
+    {
+        if(Auth::id()){
+            $category = Category::all();
+            return view('admin.showCategory', compact('category'));
+           }else{
+            return redirect('login');
+           }
+    }
 
 }

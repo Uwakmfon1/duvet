@@ -85,7 +85,7 @@
 
 
           <li class="nav-item menu-items">
-            <a class="nav-link" href="pages/icons/mdi.html">
+            <a class="nav-link" href="{{url('/show_categories')}}">
               <span class="menu-icon">
                 <i class="mdi mdi-contacts"></i>
               </span>
