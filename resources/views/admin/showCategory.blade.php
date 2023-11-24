@@ -1,41 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    @include("admin.css")
     <style>
-        .div_center {
-            text-align: center;
-            padding-top: 40px;
-        }
-
-        .font_size {
+       .div_center{
+           text-align: center;
+       }
+       .h2_font{
             font-size: 40px;
-            padding-bottom: 40px;
-        }
+           padding-bottom: 40px;
+       }
+       form{
+           color: black;
+       }
 
-
-        .text_color {
-            color: black;
-            padding-bottom: 20px;
-        }
-
-        label {
-            display: inline-block;
-            width: 200px;
-        }
-
-        .div_design {
-            padding-bottom: 15px;
-        }
-
-        .submit {
-            background: transparent;
-            border: 1px solid white;
-            color: white;
-            padding: 5px;
-        }
+       .center{
+           margin: auto;
+           width: 50%;
+           text-align: center;
+           border: 3px solid white;
+           margin-top: 30px;
+       }
 
     </style>
-    @include("admin.css")
 </head>
 <body>
 <div class="container-scroller">
@@ -43,6 +30,7 @@
     @include("admin.sidebar")
     <!-- partial -->
     @include("admin.header")
+    <!-- page-body-wrapper ends -->
     <div class="main-panel">
         <div class="content-wrapper">
             @if(session()->has('message'))
@@ -53,31 +41,43 @@
                     {{ session()->get('message') }}
                 </div>
             @endif
-
             <div class="div_center">
-                <h2 class="font_size">Add Category</h2>
+                <h2 class="h2_font">Add Category</h2>
 
-                <div class="add_category">
-
-                    <form action="{{ url('/add_category') }}" method="POST">
-                        <input type="text" name="category" style="color: black;">
-                        <input type="submit" value='Add Category' style="border:2px solid rgb(140, 140, 175);border-radius:6px; padding:6px;">
-                    </form>
-
-                </div>
-
-                <table>
-                    {{-- @foreach($category as $category)
-
-                    @endforeach --}}
-                </table>
+                <form action="{{ url('/add_categories') }}" method="POST">
+                    @csrf
+                    <input type="text" class="input_color" placeholder="Enter Category name" name="category">
+                    <input type="submit" name="submit" class="btn btn-primary" value="Add Category">
+                </form>
             </div>
+            <table class="center">
+                <tr>
+                    <td>Category Name</td>
+                    <td>Action</td>
+                </tr>
+
+                @foreach($category as $category)
+
+                    <tr>
+                        <td>{{ $category->category_name }}</td>
+
+                        <td>
+                            <a onclick="confirm('Are You Sure To Delete This?')"
+                                 class="btn btn-danger" >Delete</a>
+                        </td>
+
+
+                    </tr>
+
+
+
+
+                @endforeach
+            </table>
         </div>
     </div>
-    <!-- page-body-wrapper ends -->
 
-
-    <!-- container-scroller -->
+<!-- container-scroller -->
 @include("admin.script")
 </body>
 </html>

@@ -90,9 +90,9 @@
                         <label>Product Category: </label>
                         <select class="text_color" name="category">
                             <option value="" selected="">Add a Category</option>
-                            {{-- @foreach ($category as $category)
+                            @foreach ($category as $category)
                                 <option value="{{ $category->category_name }}">{{ $category->category_name }}</option>
-                            @endforeach --}}
+                            @endforeach
                         </select>
                     </div>
 
