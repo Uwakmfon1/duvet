@@ -33,6 +33,12 @@
             padding: 5px;
         }
 
+        #addCat{
+
+        }
+        #addCat:hover{
+            border:2px solid white;
+        }
     </style>
     @include("admin.css")
 </head>
@@ -102,8 +108,8 @@
                         <input type="file" name="image" placeholder="select an image" required="">
                     </div>
 
-                    <div class="div_design" style="background:blue;">
-                        <input type="submit" value="Add Category">
+                    <div class="div_design">
+                        <input  id="addCat" type="submit" value="Add Product" style="background: transparent;border:2px solid blue;padding:4px;border-radius:4px;">
                     </div>
 
                 </form>

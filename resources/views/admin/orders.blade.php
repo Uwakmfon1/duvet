@@ -56,16 +56,10 @@
                     <td>Action</td>
                 </tr>
 
-                @foreach($category as $category)
+                @foreach($order as $order)
 
                     <tr>
-                        <td>{{ $category->category_name }}</td>
-
-                        <td>
-                            <a onclick="confirm('Are You Sure To Delete This?')"
-                               href="{{ url('/delete_category',$category->id) }}"  class="btn btn-danger" >Delete</a>
-                        </td>
-
+                        <td>{{ $order->name }}</td>
 
                     </tr>
 

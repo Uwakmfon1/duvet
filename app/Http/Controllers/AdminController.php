@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\User;
+use App\Models\Order;
 use App\Models\Category;
 
 
@@ -37,7 +38,7 @@ class AdminController extends Controller
 
          $product->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('message','Product Added Successfully');
     }
 
 
@@ -115,20 +116,34 @@ class AdminController extends Controller
             return redirect('login');
         }
     }
+
     public function delete_product($id)
     {
         $product = Product::find($id);
         $product->delete();
-        $product->save();
-        return redirect()->save()->with("mesaages",'You successfully Deleted this');
+
+        return redirect()->back()->with("mesaages",'You successfully Deleted this');
     }
 
     public function delete_category($id)
     {
-        $category = Category::find($id);
-        $category->delete();
-        $category->save();
-        return redirect()->save()->with("mesaages",'You successfully Deleted this');
+            if(Auth::id()){
+            $category = Category::find($id);
+            $category->delete();
+            return redirect()->back()->with("message",'You successfully Deleted this');
+        }else{
+            return redirect('login');
+        }
     }
 
+    public function show_orders()
+    {
+        if(Auth::id())
+        {
+            $order = Order::all();
+        return view('admin.orders',compact('order'));
+        }else{
+            return redirect('login');
+        }
+  }
 }

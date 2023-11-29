@@ -24,6 +24,14 @@
         .tStyle{
             background-color:blue;
         }
+
+        .add_product{
+            margin-left:40%;
+        }
+
+        .font_size{
+            font-size: 30px;
+        }
     </style>
 </head>
 <body>
@@ -34,12 +42,15 @@
     @include("admin.header")
     <!-- page-body-wrapper ends -->
     <div class="main-panel">
-        <div class="content-wrapper">
+        <div class="content-wrapper" >
             @if($product->count() == 0)
-                <h2 class="font_size">No products Yet</h2>
-                <a href="{{ url('/view_product') }}" class="btn btn-success size" >
-                    Add products
-                </a>
+                <div class="add_product">
+                    <h2 class="font_size">No products Yet</h2> <br>
+                    <a href="{{ url('/view_product') }}" class="btn btn-success size" style='margin-left:3em;'>
+                        Add products
+                    </a>
+                </div>
+
             @else
 
             @if(session()->has('message'))

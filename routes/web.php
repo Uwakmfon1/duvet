@@ -42,11 +42,17 @@ route::get('/show_categories',[ AdminController::class,'show_categories']);
 
 route::post('/add_category',[AdminController::class,'add_categories']);
 
+route::get('/delete_category/{id}',[AdminController::class,'delete_category']);
+
 route::get('/update_product/{id}',[AdminController::class,'update_product']);
 
 route::get('/delete_product/{id}',[AdminController::class,'delete_product']);
 
 route::get('/update_product_confirm/{id}',[ AdminController::class,'update_product_confirm']);
+
+route::get('show_orders',[AdminController::class,'show_orders']);
+
+route::get('/order',[AdminController::class,'order']);
 
 route::get('/redirect',[HomeController::class,'redirect']);
 
