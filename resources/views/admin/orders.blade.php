@@ -42,17 +42,17 @@
                 </div>
             @endif
             <div class="div_center">
-                <h2 class="h2_font">Add Category</h2>
+                <h2 class="h2_font">All Orders</h2>
 
-                <form action="{{ url('/add_category') }}" method="POST">
+                <form action="#" method="POST">
                     @csrf
-                    <input type="text" class="input_color" placeholder="Enter Category name" required name="category_name">
-                    <input type="submit" name="submit" class="btn btn-primary" value="Add Category">
+                    <input type="text" class="input_color" placeholder="Search Orders" required name="category_name">
+                    <input type="button" name="search" class="btn btn-primary" value="Search">
                 </form>
             </div>
             <table class="center">
                 <tr>
-                    <td>Category Name</td>
+                    <td>Orders</td>
                     <td>Action</td>
                 </tr>
 

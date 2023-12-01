@@ -6,15 +6,18 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 // use Illuminate\Support\Facades\Hash;
+use App\Models\Product;
 
 class HomeController extends Controller
 {
     public function index()
     {
+        $product = Product::all();
+
         // $product = product::paginate(6);
         // $comment = Comment::orderby('id', 'desc')->get();
         // $reply = Reply::all();
-        return view('home.userpage');//, compact('product', 'comment', 'reply'));
+        return view('home.userpage', compact('product'));//, 'comment', 'reply'));
     }
 
     public function redirect()
@@ -34,5 +37,12 @@ class HomeController extends Controller
         // $order = Order::all();
         // $total_revenue = 0;
 
+    }
+
+    public function show_particular_item($id)
+    {
+        // dd($id);
+        $product = Product::find($id);
+        return view('home.show_particular_item', compact('product'));
     }
 }

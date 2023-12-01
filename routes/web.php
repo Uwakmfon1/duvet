@@ -15,9 +15,9 @@ use App\Http\Controllers\AdminController;
 |
 */
 
-Route::get('/', function () {
-    return view('home.userpage');
-});
+// Route::get('/', function () {
+//     return view('home.userpage');
+// });
 
 
 Route::middleware([
@@ -30,7 +30,8 @@ Route::middleware([
     })->name('dashboard');
 });
 
-
+route::get('/',[HomeController::class,'index']);
+route::get('/show_particular_item/{id}',[HomeController::class,'show_particular_item']);
 
 route::get('/view_product',[AdminController::class,'view_product']);
 
