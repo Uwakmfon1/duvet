@@ -43,6 +43,9 @@ class HomeController extends Controller
     {
         // dd($id);
         $product = Product::find($id);
-        return view('home.show_particular_item', compact('product'));
+        $productId = $product->id;
+        $image = $product->image;
+        // dd($image);
+        return view('home.show_particular_item', compact('product','image'));
     }
 }
