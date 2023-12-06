@@ -1,49 +1,22 @@
-<header class="header_section">
-    <div class="container">
-    <nav class="navbar navbar-expand-lg">
-        <a class="navbar-brand" href="index.html"><h2>Sixteen <em>Clothing</em></h2></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#" {{-- index.html --}}>Home
-                <span class="sr-only">(current)</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#" {{-- products.html --}}>Our Products</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#" {{-- about.html --}}>About Us</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#" {{-- contact.html --}}>Contact Us</a>
-            </li>
-            @if (Route::has('login'))
-            @auth
-                <li class="nav-item">
-                    <x-app-layout>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <title>Sixteen Clothing HTML Template</title>
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<!--
+TemplateMo 546 Sixteen Clothing
+https://templatemo.com/tm-546-sixteen-clothing
+-->
 
-                    </x-app-layout>
-                </li>
-            @else
-                <li class="nav-item">
-                    <a class="btn btn-primary" href="{{ route('login') }}" style="margin-right:10px;">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="btn btn-info" href="{{ route('register') }}">Sign Up</a>
-                </li>
-            @endauth
-          @endif
-
-          </ul>
-
-
-
-        </div>
-    </nav>
-</div>
-  </header>
-
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/templatemo-sixteen.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+  </head>

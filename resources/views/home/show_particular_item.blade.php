@@ -1,61 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-
+@include('home.header')
+{{-- @include('home.navbar') --}}
 <style>
-    body{
-        background:rgb(241, 237, 237);
+    body {
+        background: rgb(241, 237, 237);
     }
 
-    .show{
-        display: flex;
-        gap: 100px;
-        width: 60vw;
-        height: 60vh;
-        background:#fff;
-        border-radius:10px;
-        margin-top:10% !important;
-        margin-left:20%;
+    .show {
+
+        width: 90%;
+        height: 90%;
+        background: #fff;
+
+        margin-top: 3% !important;
+        /* margin-left: 30%; */
         box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
-        padding:3em;
+
     }
 
 
-    .show > .secondClass > button{
+    .show>.secondClass>button {
         background-color: red !important;
         position: relative;
-        
     }
 
-    .show image{
-        width: 45% !important;
-        height:60vh;
+    #image {
+
+        margin-left: 4em;
+        /* margin-top:3em; */
+     /* padding-left:25px; */
     }
 
-    button{
-        width:250px;
-        height:50px;
+    button {
+        width: 250px;
+        height: 50px;
         border-radius: 5px;
         border: none;
     }
-
 </style>
+
 <body>
-    {{-- <?php echo  ?> --}}
-
     <div class="show">
-        <div>
-            <img src="../product/{{ $image }}" alt=""></a>
-        </div>
 
-        <div class="secondClass">
+            <h2>{{ $product->title }}</h2>
+            <img src="../product/{{ $image }}" alt="" id="image" width="250" height="250"></a>
             <h3>{{ $product->price }}</h3>
+
             <button style="background-color: orange;">
                 <svg xmlns="http://www.w3.org/2000/svg" height="16" width="18"
                     viewBox="0 0 576 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
@@ -64,8 +53,8 @@
                 </svg>
                 Add To Cart
             </button>
-        </div>
-    </div>
-</body>
 
-</html>
+
+    </div>
+
+@include('home.footer')
