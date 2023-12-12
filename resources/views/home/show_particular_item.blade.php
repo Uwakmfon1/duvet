@@ -1,60 +1,73 @@
-@include('home.header')
-{{-- @include('home.navbar') --}}
-<style>
-    body {
-        background: rgb(241, 237, 237);
-    }
-
-    .show {
-
-        width: 90%;
-        height: 90%;
-        background: #fff;
-
-        margin-top: 3% !important;
-        /* margin-left: 30%; */
-        box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
-
-    }
-
-
-    .show>.secondClass>button {
-        background-color: red !important;
-        position: relative;
-    }
-
-    #image {
-
-        margin-left: 4em;
-        /* margin-top:3em; */
-     /* padding-left:25px; */
-    }
-
-    button {
-        width: 250px;
-        height: 50px;
-        border-radius: 5px;
-        border: none;
-    }
-</style>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <title>Sixteen Clothing HTML Template</title>
+    <!-- Bootstrap core CSS -->
+    <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+<!--
+TemplateMo 546 Sixteen Clothing
+https://templatemo.com/tm-546-sixteen-clothing
+-->
+    <link rel="stylesheet" href="{{ asset('assets/css/fontawesome.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/templatemo-sixteen.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/owl.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
+    <title>Document</title>
+</head>
 <body>
-    <div class="show">
-
-            <h2>{{ $product->title }}</h2>
-            <img src="../product/{{ $image }}" alt="" id="image" width="250" height="250"></a>
-            <h3>{{ $product->price }}</h3>
-
-            <button style="background-color: orange;">
-                <svg xmlns="http://www.w3.org/2000/svg" height="16" width="18"
-                    viewBox="0 0 576 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
-                    <path
-                        d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z" />
-                </svg>
-                Add To Cart
+    <header class="header_section">
+        <div class="container">
+        <nav class="navbar navbar-expand-lg">
+            <a class="navbar-brand" href="index.html"><h2>Sixteen <em>Clothing</em></h2></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+             aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
             </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="#">Home
+                    <span class="sr-only">(current)</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Our Products</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">About Us</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Contact Us</a>
+                </li>
+                    <li class="nav-item">
+                        <x-app-layout>
 
-
+                        </x-app-layout>
+                    </li>
+              </ul>
+            </div>
+        </nav>
     </div>
+      </header>
 
-@include('home.footer')
+
+      <div class="product_card">
+        <img src="../product/{{ $image }}" alt="" id="image" width="350" height="350">
+        <div class="t_price" style="display:flex; gap:10px;">
+            <h2 style="background:green;">{{ $product->title }}</h2>
+        @if ($product->discount_price !== null)
+        <h2>{{ $product->discount_price }}</h2>
+        @else
+        <h2>{{ $product->price }}</h2>
+        @endif
+        </div>
+      </div>
+
+</body>
+</html>

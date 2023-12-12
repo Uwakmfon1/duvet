@@ -31,6 +31,7 @@ Route::middleware([
 });
 
 route::get('/',[HomeController::class,'index']);
+
 route::get('/show_particular_item/{id}',[HomeController::class,'show_particular_item']);
 
 route::get('/view_product',[AdminController::class,'view_product']);
