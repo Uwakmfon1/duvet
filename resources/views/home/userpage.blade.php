@@ -11,7 +11,6 @@
         position: absolute;
       top: 30%;
       left: 20%;
-
       transform: translate(-50%, -50%);
       width: 100px;
       height: 100px;
@@ -22,7 +21,18 @@
 
     #container:hover .overlay{
         display: block;
+    }
 
+    .option_container:hover .overlay{
+        display: block;
+    }
+
+    #submit_input{
+        height:35px;
+        background:blue;
+        color: white;
+        margin-left:100px;
+        margin-top:2em;
     }
 </style>
 <body>
@@ -75,55 +85,59 @@
                     </div>
                 </div>
                 @foreach ($product as $product)
-                    <a href="{{ url('/show_particular_item', $product->id) }}" >
-                        <div class="col-md-4" id="container">
-                            <div class="product-item">
-                                <div class="overlay">
-                                    {{-- {{url('/add_cart',$product->id)}} --}}
-                               <form action="#" method="post" style="display:flex">
-                                   @csrf
-                                   <div class="nums" style="display:flex; gap:10px;">
-                                    <div class="col-md-4">
-                                        <input type="number" min="1" value="1" name="quantity">
-                                    </div>
+                {{-- <a href="{{ url('/show_particular_item', $product->id) }}" > --}}
+                    <div class="col-md-4" id="container">
+                        <div class="product-item">
+                            <div class="overlay">
+                                {{-- {{url('/add_cart',$product->id)}} --}}
+                           <form action="#" method="post">
+                               @csrf
 
-                                    <div class="col-md-4">
-                                        <input type="submit" value="Add To Cart" style="background:black;">
-                                    </div>
-                                   </div>
-
-                               </form>
-                               </div>
-                                <a href="{{ url('/show_particular_item', $product->id) }}"><img
-                                        src="product/{{ $product->image }}" height="150" alt=""></a>
-                                <div class="down-content">
-                                    <a href="#">
-                                        <h4>{{ $product->title }}</h4>
-                                    </a>
-
-
-
-
-                                    @if ($product->discount_price !== null)
-                                        <h6>₦{{ $product->discount_price }}</h6>
-                                    @else
-                                        <h6>₦{{ $product->price }}</h6>
-                                    @endif
-                                    <p>Lorem ipsume dolor sit amet, adipisicing elite. Itaque, corporis nulla
-                                        aspernatur.</p>
-                                    <ul class="stars">
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                    </ul>
-                                    <span>Reviews (24)</span>
+                               <div class="add_cart" style="display:flex;">
+                                <div class="col-md-4">
+                                    <input type="number" min="1" value="1" name="quantity" style="width:100px;">
                                 </div>
+
+                                <div class="col-md-4">
+                                    <input type="submit" value="Add To Cart" id="submit_input">
+                                </div>
+
+                               </div>
+
+
+
+                           </form>
+                           </div>
+                            <a href="{{ url('/show_particular_item', $product->id) }}"><img
+                                    src="product/{{ $product->image }}" height="150" alt=""></a>
+                            <div class="down-content">
+                                <a href="#">
+                                    <h4>{{ $product->title }}</h4>
+                                </a>
+
+
+
+
+                                @if ($product->discount_price !== null)
+                                    <h6>₦{{ $product->discount_price }}</h6>
+                                @else
+                                    <h6>₦{{ $product->price }}</h6>
+                                @endif
+                                <p>Lorem ipsume dolor sit amet, adipisicing elite. Itaque, corporis nulla
+                                    aspernatur.</p>
+                                <ul class="stars">
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                </ul>
+                                <span>Reviews (24)</span>
                             </div>
                         </div>
-                    </a>
-                @endforeach
+                    </div>
+                {{-- </a> --}}
+            @endforeach
             </div>
         </div>
     </div>
