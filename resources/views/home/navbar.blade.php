@@ -22,6 +22,9 @@
             <li class="nav-item">
               <a class="nav-link" href="#">Contact Us</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Cart</a>
+              </li>
             @if (Route::has('login'))
             @auth
                 <li class="nav-item">

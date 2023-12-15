@@ -1,40 +1,39 @@
 @include('home.header')
 <style>
-    #container{
-    position: relative;
-      /* width: 500px !important;
+    #container {
+        position: relative;
+        /* width: 500px !important;
       height: 400px !important; */
 
     }
 
-    .overlay{
+    .overlay {
         position: absolute;
-      top: 30%;
-      left: 20%;
-      transform: translate(-50%, -50%);
-      width: 100px;
-      height: 100px;
-      display: none;
-      text-align: center;
-      line-height: 100px;
+        top: 30%;
+        left: 20%;
+        transform: translate(-50%, -50%);
+        width: 100px;
+        height: 100px;
+        display: none;
+        text-align: center;
+        line-height: 100px;
     }
 
-    #container:hover .overlay{
-        display: block;
-    }
 
-    .option_container:hover .overlay{
-        display: block;
-    }
 
-    #submit_input{
-        height:35px;
-        background:blue;
+    #submit_input {
+        height: 35px;
+        background: blue;
         color: white;
-        margin-left:100px;
-        margin-top:2em;
+        margin-left: 100px;
+        margin-top: 2em;
+    }
+    .add_cart{
+       display:flex;
+
     }
 </style>
+
 <body>
     <!-- ***** Preloader Start ***** -->
     <div id="preloader">
@@ -85,29 +84,13 @@
                     </div>
                 </div>
                 @foreach ($product as $product)
-                {{-- <a href="{{ url('/show_particular_item', $product->id) }}" > --}}
+                    {{-- <a href="{{ url('/show_particular_item', $product->id) }}" > --}}
                     <div class="col-md-4" id="container">
                         <div class="product-item">
                             <div class="overlay">
                                 {{-- {{url('/add_cart',$product->id)}} --}}
-                           <form action="#" method="post">
-                               @csrf
-
-                               <div class="add_cart" style="display:flex;">
-                                <div class="col-md-4">
-                                    <input type="number" min="1" value="1" name="quantity" style="width:100px;">
-                                </div>
-
-                                <div class="col-md-4">
-                                    <input type="submit" value="Add To Cart" id="submit_input">
-                                </div>
-
-                               </div>
-
-
-
-                           </form>
-                           </div>
+                                
+                            </div>
                             <a href="{{ url('/show_particular_item', $product->id) }}"><img
                                     src="product/{{ $product->image }}" height="150" alt=""></a>
                             <div class="down-content">
@@ -136,8 +119,8 @@
                             </div>
                         </div>
                     </div>
-                {{-- </a> --}}
-            @endforeach
+                    {{-- </a> --}}
+                @endforeach
             </div>
         </div>
     </div>
@@ -153,10 +136,11 @@
                 <div class="col-md-6">
                     <div class="left-content">
                         <h4>Looking for the best products?</h4>
-                        <p><a rel="nofollow" href="https://templatemo.com/tm-546-sixteen-clothing" target="_parent">Lorem, ipsum.
-                        </a> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis voluptatibus
-                                 eius quas est mollitia numquam? <a
-                                rel="nofollow" href="#">Contact us</a> for more info.</p>
+                        <p><a rel="nofollow" href="https://templatemo.com/tm-546-sixteen-clothing"
+                                target="_parent">Lorem, ipsum.
+                            </a> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis voluptatibus
+                            eius quas est mollitia numquam? <a rel="nofollow" href="#">Contact us</a> for more
+                            info.</p>
                         <ul class="featured-list">
                             <li><a href="#">Lorem ipsum dolor sit amet</a></li>
                             <li><a href="#">Consectetur an adipisicing elit</a></li>

@@ -59,3 +59,9 @@ route::get('/order',[AdminController::class,'order']);
 route::get('/redirect',[HomeController::class,'redirect']);
 
 
+Route::post('add_cart/{id}',[HomeController::class,'add_cart']);
+
+// Route::post('add_cart','App\Http\Controllers\HomeController@add_cart');
+
+
+
