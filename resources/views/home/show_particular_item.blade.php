@@ -16,6 +16,11 @@
 TemplateMo 546 Sixteen Clothing
 https://templatemo.com/tm-546-sixteen-clothing
 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"
+ integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA=="
+ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
     <link rel="stylesheet" href="{{ asset('assets/css/fontawesome.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/templatemo-sixteen.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/owl.css') }}">
@@ -25,6 +30,7 @@ https://templatemo.com/tm-546-sixteen-clothing
 </head>
 
 <body>
+    @include('sweetalert::alert')
 
     <header class="header_section">
         <div class="container">
@@ -53,7 +59,7 @@ https://templatemo.com/tm-546-sixteen-clothing
                             <a class="nav-link" href="#">Contact Us</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Cart</a>
+                            <a class="nav-link" href="/cart">Cart</a>
                         </li>
                         @if (Route::has('login'))
                             @auth
@@ -79,10 +85,16 @@ https://templatemo.com/tm-546-sixteen-clothing
         </div>
     </header>
 
-
-
     <br><br><br><br><br><br><br>
 
+    {{-- @if (session()->has('message'))
+        <div class="alert alert-success">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                x
+            </button>
+            {{ session()->get('message') }}
+        </div>
+    @endif --}}
 
 
     <div class="product_card">
@@ -105,10 +117,10 @@ https://templatemo.com/tm-546-sixteen-clothing
             <div>
                 <h2 id="add_quantity">Add Quantity</h2>
 
-                <form action="{{url('add_cart',$product->id)}}" method="POST">
+                <form action="{{ url('add_cart', $product->id) }}" method="POST">
                     @csrf
 
-                  <input type="text" name="image_src" value="{{ $product->image }}"  hidden>
+                    <input type="text" name="image_src" value="{{ $product->image }}" hidden>
 
 
                     <textarea name="product_title" value="{{ $product->title }}" id="" cols="30" rows="10" hidden>

@@ -6,7 +6,6 @@ use App\Models\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
-use App\ModelsCart;
 use App\Models\Product;
 
 use RealRashid\SweetAlert\Facades\Alert;
@@ -52,10 +51,10 @@ class HomeController extends Controller
 
             if ($product_exist_id != null) {
                 $cart = Cart::find($product_exist_id)->first();
-                dd($cart);
+                // dd($cart);
                 $quantity  = $cart->quantity;
                 $cart->quantity = $quantity + $request->quantity;
-
+                // dd($quantity);
                 if ($product->discount_price != null) {
                     $cart->price = $product->discount_price * $cart->quantity;
                 } else {
@@ -90,7 +89,9 @@ class HomeController extends Controller
                 $cart->quantity = $request->quantity;
                 $cart->save();
 
-                return redirect()->back()->with('message','Product added successfully');
+                Alert::success("Product Added Successfully!",'You have added product to the cart');
+
+                return redirect()->back();//->with('message','Product added successfully');
             }
 
 
@@ -98,4 +99,20 @@ class HomeController extends Controller
             return redirect('login');
         }
 }
+
+
+    public function view_cart()
+    {
+        $cart = Cart::all();
+       return view('home.show_cart',[
+        'cart'=>$cart,
+       ]);
+    }
+
+    public function remove_cart($id)
+    {
+        $cart=Cart::find($id);
+        $cart->delete();
+        return redirect()->back();
+    }
 }
