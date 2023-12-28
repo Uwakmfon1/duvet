@@ -30,9 +30,6 @@ Route::middleware([
     })->name('dashboard');
 });
 
-route::get('/',[HomeController::class,'index']);
-
-route::get('/show_particular_item/{id}',[HomeController::class,'show_particular_item']);
 
 route::get('/view_product',[AdminController::class,'view_product']);
 
@@ -56,8 +53,19 @@ route::get('show_orders',[AdminController::class,'show_orders']);
 
 route::get('/order',[AdminController::class,'order']);
 
-route::get('/redirect',[HomeController::class,'redirect']);
 
+
+
+
+
+
+route::get('/',[HomeController::class,'index']);
+
+route::get('/view_products',[HomeController::class,'view_products']);
+
+route::get('/show_particular_item/{id}',[HomeController::class,'show_particular_item']);
+
+route::get('/redirect',[HomeController::class,'redirect']);
 
 Route::post('add_cart/{id}',[HomeController::class,'add_cart']);
 

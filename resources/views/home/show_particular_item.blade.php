@@ -31,8 +31,8 @@ https://templatemo.com/tm-546-sixteen-clothing
 
 <body>
     @include('sweetalert::alert')
-
-    <header class="header_section">
+    @include('home.navbar')
+    {{-- <header class="header_section">
         <div class="container">
             <nav class="navbar navbar-expand-lg">
                 <a class="navbar-brand" href="index.html">
@@ -83,7 +83,7 @@ https://templatemo.com/tm-546-sixteen-clothing
                 </div>
             </nav>
         </div>
-    </header>
+    </header> --}}
 
     <br><br><br><br><br><br><br>
 
