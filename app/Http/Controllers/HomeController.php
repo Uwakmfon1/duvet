@@ -24,23 +24,24 @@ class HomeController extends Controller
     public function index()
     {
         $product = Product::all();
-        return view('home.userpage', compact('product'));//, 'comment', 'reply'));
+        return view('home.userpage', compact('product')); //, 'comment', 'reply'));
     }
 
     public function redirect()
     {
         $usertype = Auth::user()->usertype;
         $product = Product::all();
-        if($usertype == '1'){
+        if ($usertype == '1') {
             return view('admin.home');
-        }else{
-            return view('home.userpage',compact('product'));
+        } else {
+            return view('home.userpage', compact('product'));
         }
     }
 
-    public function view_products(){
-        $product= Product::all();
-        return view('home.all_products',compact('product'));
+    public function view_products()
+    {
+        $product = Product::all();
+        return view('home.all_products', compact('product'));
     }
 
     public function show_particular_item($id)
@@ -49,10 +50,10 @@ class HomeController extends Controller
         $productName = $product->name;
         $productId = $product->id;
         $image = $product->image;
-        return view('home.show_particular_item', compact('product','image','productName'));
+        return view('home.show_particular_item', compact('product', 'image', 'productName'));
     }
 
-    public function add_cart(Request $request,$id)
+    public function add_cart(Request $request, $id)
     {
         if (Auth::id()) {
             $user = Auth::user();
@@ -76,10 +77,9 @@ class HomeController extends Controller
 
                 $cart->save();
 
-                Alert::success("Product Added Successfully!",'You have added product to the cart');
+                Alert::success("Product Added Successfully!", 'You have added product to the cart');
 
                 return redirect()->back();
-
             } else {
                 $cart = new Cart;
                 $cart->name = $user->name;
@@ -102,57 +102,62 @@ class HomeController extends Controller
                 $cart->quantity = $request->quantity;
                 $cart->save();
 
-                Alert::success("Product Added Successfully!",'You have added product to the cart');
+                Alert::success("Product Added Successfully!", 'You have added product to the cart');
 
-                return redirect()->back();//->with('message','Product added successfully');
+                return redirect()->back(); //->with('message','Product added successfully');
             }
-
-
         } else {
             return redirect('login');
         }
-}
+    }
 
 
     public function view_cart()
     {
-        $cart = Cart::all();
-       return view('home.show_cart',[
-        'cart'=>$cart,
-       ]);
+        if (Auth::id()) {
+            $user = Auth::user();
+            $cart = Cart::all();
+            return view('home.show_cart', [
+                'cart' => $cart,
+            ]);
+        } else {
+            return redirect('login');
+        }
     }
 
     public function remove_cart($id)
     {
-        $cart=Cart::find($id);
+        $cart = Cart::find($id);
         $cart->delete();
         return redirect()->back();
     }
 
     public function stripe($totalPrice)
     {
-        return view('home.stripe',compact('totalPrice'));
+        if(Auth::id()){
+            $user = Auth::user();
+            return view('home.stripe', compact('totalPrice','user'));
+        }else{
+            return redirect('/login');
+        }
     }
 
     public function cash_order()
     {
-        $user=Auth::user();
+        $user = Auth::user();
         $userId = $user->id;
-        $orders = Cart::where('user_id','=',$userId)->get();
-        dd($orders);
+        $orders = Cart::where('user_id', '=', $userId)->get();
+
     }
 
-    public function stripePost(Request $request,$totalPrice)
+    public function stripePost(Request $request, $totalPrice)
     {
-
-
         Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
-
-        Stripe\Charge::create ([
-                "amount" => $totalPrice * 100, // 1cent = 0.0089 naira and 112.12 CENT = 1 naira and 1 dollar = 100cents
-                "currency" => "NGN",
-                "source" => $request->stripeToken,
-                "description" => "Thanks For Payment"
+        Stripe\Charge::create([
+            "amount" => $totalPrice * 100, // 1cent = 0.0089 naira and 112.12 CENT = 1 naira and 1 dollar = 100cents
+            "currency" => "NGN",
+            "source" => $request->stripeToken,
+            "description" => "Thanks For Payment"
         ]);
 
         $user = Auth::user();

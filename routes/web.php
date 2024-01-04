@@ -79,3 +79,4 @@ route::get('/stripe/{totalPrice}',[HomeController::class,'stripe']);
 
 Route::post('stripe/{totalPrice}',[HomeController::class,'stripePost'])->name('stripe.post');
 
+
