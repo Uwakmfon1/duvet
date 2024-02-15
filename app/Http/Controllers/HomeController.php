@@ -114,6 +114,7 @@ class HomeController extends Controller
 
     public function view_cart()
     {
+        // dd(Cart::all());
         if (Auth::id()) {
             $user = Auth::user();
             $cart = Cart::all();
@@ -122,6 +123,7 @@ class HomeController extends Controller
             ]);
         } else {
             return redirect('login');
+
         }
     }
 
@@ -150,8 +152,11 @@ class HomeController extends Controller
 
     }
 
+
+
     public function stripePost(Request $request, $totalPrice)
     {
+        // dd($totalPrice);
         Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
         Stripe\Charge::create([
             "amount" => $totalPrice * 100, // 1cent = 0.0089 naira and 112.12 CENT = 1 naira and 1 dollar = 100cents

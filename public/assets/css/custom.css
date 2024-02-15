@@ -34,6 +34,17 @@
 margin-bottom:10px;
 }
 
-.t_price{
+
+
+@include media-breakpoint-up(sm){
+
+    .navbar-brand h2
+    {
+        color:;
+    }
+
+}
+
+@media screen and {
 
 }

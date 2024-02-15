@@ -40,6 +40,8 @@
     <!-- end header section -->
 
     <div class="center">
+       
+        @if (count($cart)!= 0)
         <table>
             <tr>
                 <th class="th_deg">Product Title</th>
@@ -74,6 +76,11 @@
                 <a href="{{url('/stripe',$totalPrice)}}" class="btn btn-danger">Pay using Card</a>
             </div>
     </div>
+        @else
+        <h2 style="font-size:30px;">There are currently no items in the cart</h2> <br>
+        <a href="{{ url('/view_products') }}" style="color:blue;">Back to Product page</a>
+        @endif
+
 
 
     <script>
