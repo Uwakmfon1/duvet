@@ -16,6 +16,9 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            screens:{
+                '380x480':{'raw':'(width:380px),(height:480)'}
+            },
         },
     },
 

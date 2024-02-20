@@ -20,7 +20,6 @@
     }
 
 
-
     #submit_input {
         height: 35px;
         background: blue;
@@ -28,9 +27,9 @@
         margin-left: 100px;
         margin-top: 2em;
     }
+
     .add_cart{
        display:flex;
-
     }
 </style>
 
@@ -89,7 +88,7 @@
                         <div class="product-item">
                             <div class="overlay">
                                 {{-- {{url('/add_cart',$product->id)}} --}}
-                                
+
                             </div>
                             <a href="{{ url('/show_particular_item', $product->id) }}"><img
                                     src="product/{{ $product->image }}" height="150" alt=""></a>

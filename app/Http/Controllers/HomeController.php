@@ -24,7 +24,7 @@ class HomeController extends Controller
     public function index()
     {
         $product = Product::all();
-        return view('home.userpage', compact('product')); //, 'comment', 'reply'));
+        return view('home.userpage', compact('product'));
     }
 
     public function redirect()
