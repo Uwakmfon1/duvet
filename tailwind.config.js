@@ -12,14 +12,25 @@ export default {
     ],
 
     theme: {
+        screens: {
+            'phone': '300px',
+            // => @media (min-width: 300px) { ... }
+
+            'tablet': '640px',
+            // => @media (min-width: 640px) { ... }
+
+            'laptop': '1024px',
+            // => @media (min-width: 1024px) { ... }
+
+            'desktop': '1280px',
+            // => @media (min-width: 1280px) { ... }
+          },
+
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
-            screens:{
-                '380x480':{'raw':'(width:380px),(height:480)'}
-            },
-        },
+        }
     },
 
     plugins: [forms, typography],

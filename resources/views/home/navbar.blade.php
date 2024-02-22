@@ -1,61 +1,47 @@
 <header class="header_section">
     <div class="container">
-        <nav class="navbar navbar-expand-lg">
-            <a class="navbar-brand sm:text-xs" href="index.html">
-                <h2>Sixteen <em>Clothing</em></h2>
-            </a>
-            <div class="lg:hidden">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="md:navbar-toggler-icon"></span>
-            </button>
-            </div>
 
-            <div class="sm:block">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="md:navbar-toggler-icon"></span>
-            </button>
-            </div>
+<nav class="p-5 text-white font-bold shadow md:flex md:items-center md:justify-between">
+    <div class="flex justify-between items-center">
+        <span >
+            <h2 class="text-2xl font-[Poppins] cursor-pointer ">Sixteen Clothing</h2>
+        </span>
 
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{{ url('/') }}">Home
-                            <span class="sr-only">(current)</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/view_products') }}">Our Products</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">About Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/cart') }}">Cart</a>
-                    </li>
-                    @if (Route::has('login'))
-                        @auth
-                            <li class="nav-item">
-                                <x-app-layout>
-                                    <?php Auth::user()->name ?>
-                                </x-app-layout>
-                            </li>
-                        @else
-                            <li class="nav-item">
-                                <a class="btn btn-primary" href="{{ route('login') }}" style="margin-right:10px;">Login</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="btn btn-info" href="{{ route('register') }}">Sign Up</a>
-                            </li>
-                        @endauth
-                    @endif
-
-                </ul>
-            </div>
-        </nav>
+        <span class="text-3xl cursor-pointer mx-2 md:hidden block">
+            <ion-icon name="menu" onclick="Menu(this)"></ion-icon>
+        </span>
     </div>
+
+    <ul class="bg-white lg:bg-transparent lg:text-white md:flex md:items-center z-[-1] text-black
+            md:z-auto md:static absolute  w-full
+            left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 opacity-0 md:opacity-100
+            top-[-400px] transition-all ease-in duration-500  ">
+
+        <li class="mx-4 my-6 md:my-0">
+            <a href="#" class="text-xl hover:text-red-600 duration-500">Home</a>
+        </li>
+        <li class="mx-4 my-6 md:my-0">
+            <a href="#" class="text-xl hover:text-red-600 duration-500">About</a>
+        </li>
+        <li class="mx-4 my-6 md:my-0">
+            <a href="#" class="text-xl hover:text-red-600 duration-500">Contact</a>
+        </li>
+        <li class="mx-4 my-6 md:my-0">
+            <a href="#" class="text-xl hover:text-red-600 duration-500">Cart</a>
+        </li>
+        <form class="form-inline">
+            @csrf
+            <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+        </form>
+
+        <button class="bg-red font-[Poppins] duration-500 px-6 py-2 mx-4 hover:bg-red-600">
+            John Doe
+        </button>
+    </ul>
+</nav>
+
+
+</div>
 </header>

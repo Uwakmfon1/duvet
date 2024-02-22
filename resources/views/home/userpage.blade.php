@@ -34,22 +34,13 @@
 </style>
 
 <body>
-    <!-- ***** Preloader Start ***** -->
-    <div id="preloader">
-        <div class="jumper">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    </div>
-    <!-- ***** Preloader End ***** -->
 
     <!-- Header -->
     @include('home.navbar')
 
     <!-- Page Content -->
     <!-- Banner Starts Here -->
-    <div class="banner header-text">
+    <div class="banner header-text relative">
         <div class="owl-banner owl-carousel">
             <div class="banner-item-01">
                 <div class="text-content">

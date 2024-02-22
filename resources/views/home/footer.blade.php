@@ -13,8 +13,15 @@
     </div>
   </footer>
 
+  <script>
 
-  <!-- Bootstrap core JavaScript -->
+    function Menu(e){
+        let list = document.querySelector('ul');
+        e.name === 'menu' ? (e.name = 'close', list.classList.add('top-[80px]'), list.classList.add('opacity-100')) : (e.name = "menu", list.classList.remove('top-[80px]'), list.classList.remove('opacity-100'))
+    }
+</script>
+
+  <!-- Bootstrap core JavaScript , list.classList.add('z-index-20') for function above-->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
@@ -26,6 +33,16 @@
   <script src="assets/js/isotope.js"></script>
   <script src="assets/js/accordions.js"></script>
 
+<script>
+     // Initialization for ES Users
+import {
+  Collapse,
+  Dropdown,
+  initTE,
+} from "tw-elements";
+
+initTE({ Collapse, Dropdown });
+</script>
 
   <script language = "text/Javascript">
     cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
